@@ -1,0 +1,30 @@
+.copy-button-container {
+    position: absolute;
+    top: 0.1rem;
+    right: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0 0 0 5px;
+    z-index: 10;
+}
+
+.copy-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #8e8e8e;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+.copy-button:hover {
+    color: #007bff;
+}
+
+.copy-button:focus {
+    outline: none;
+    color: #0056b3;
+}
+
+pre {
+    position: relative;
+}
