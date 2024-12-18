@@ -169,11 +169,11 @@ The file name of the drive it's `win11-arm64.img`. You can choose another name i
 Now you need the UEFI firmware to run Windows 11 correctly. You can download required files with sending these commands.
 
 ``` bash
-wget https://raw.githubusercontent.com/Marko97IT/rpi5-qemu-win11.github.io/refs/heads/main/assets/uefi/QEMU_EFI-pflash.raw
+wget https://raw.githubusercontent.com/Marko97IT/rpi5-qemu-win11/refs/heads/main/assets/uefi/QEMU_EFI-pflash.raw
 ```
 
 ``` bash
-wget https://raw.githubusercontent.com/Marko97IT/rpi5-qemu-win11.github.io/refs/heads/main/assets/uefi/QEMU_VARS-pflash.raw
+wget https://raw.githubusercontent.com/Marko97IT/rpi5-qemu-win11/refs/heads/main/assets/uefi/QEMU_VARS-pflash.raw
 ```
 
 Download VirtIO drivers with this command.
