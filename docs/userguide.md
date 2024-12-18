@@ -179,7 +179,7 @@ wget https://raw.githubusercontent.com/Marko97IT/rpi5-qemu-win11/refs/heads/main
 Download VirtIO drivers with this command.
 
 ``` bash
-wget https://raw.githubusercontent.com/Marko97IT/rpi5-qemu-win11.github.io/refs/heads/main/assets/drivers/virtio-win-0.1.266.iso
+wget https://raw.githubusercontent.com/Marko97IT/rpi5-qemu-win11/refs/heads/main/assets/drivers/virtio-win-0.1.266.iso
 ```
 
 Also, you need to download the ISO of Windows 11 ARM64. You can use the command `wget` to download it from the Raspberry Pi 5.
