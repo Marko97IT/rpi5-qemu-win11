@@ -166,16 +166,20 @@ qemu-img create win11-arm64.img 128G
 
 The file name of the drive it's `win11-arm64.img`. You can choose another name if you want.
 
-Now you need the UEFI firmware to run Windows 11 correctly. You can download it sending this command.
+Now you need the UEFI firmware to run Windows 11 correctly. You can download required files with sending these commands.
 
 ``` bash
-wget https://raw.githubusercontent.com/Marko97IT/rpi5-qemu-win11.github.io/refs/heads/main/assets/QEMU_EFI.fd
+wget https://raw.githubusercontent.com/Marko97IT/rpi5-qemu-win11.github.io/refs/heads/main/assets/uefi/QEMU_EFI-pflash.raw
+```
+
+``` bash
+wget https://raw.githubusercontent.com/Marko97IT/rpi5-qemu-win11.github.io/refs/heads/main/assets/uefi/QEMU_VARS-pflash.raw
 ```
 
 Download VirtIO drivers with this command.
 
 ``` bash
-wget https://github.com/qemus/virtiso-arm/releases/download/v0.1.266-1/virtio-win-0.1.266.iso
+wget https://raw.githubusercontent.com/Marko97IT/rpi5-qemu-win11.github.io/refs/heads/main/assets/drivers/virtio-win-0.1.266.iso
 ```
 
 Also, you need to download the ISO of Windows 11 ARM64. You can use the command `wget` to download it from the Raspberry Pi 5.
@@ -204,7 +208,8 @@ sudo qemu-system-aarch64 \
   -cpu max \
   -smp 4,cores=2,threads=2 \
   --accel kvm \
-  -bios ./QEMU_EFI.fd \
+  -drive if=pflash,file=./QEMU_EFI-pflash.raw,format=raw \
+  -drive if=pflash,file=./QEMU_VARS-pflash.raw,format=raw \
   -device ramfb \
   -device qemu-xhci \
   -device usb-ehci \
@@ -308,7 +313,8 @@ sudo qemu-system-aarch64 \
   -cpu max \
   -smp 4,cores=2,threads=2 \
   --accel kvm \
-  -bios ./QEMU_EFI.fd \
+  -drive if=pflash,file=./QEMU_EFI-pflash.raw,format=raw \
+  -drive if=pflash,file=./QEMU_VARS-pflash.raw,format=raw \
   -device qemu-xhci \
   -device usb-ehci \
   -device usb-kbd \
