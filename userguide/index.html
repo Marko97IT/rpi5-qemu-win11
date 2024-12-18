@@ -264,12 +264,15 @@ In this case I will create a drive with 128 GB of space. You can increase or dec
 </code></pre></div>
 
 <p>The file name of the drive it's <code>win11-arm64.img</code>. You can choose another name if you want.</p>
-<p>Now you need the UEFI firmware to run Windows 11 correctly. You can download it sending this command.</p>
-<div class="codehilite"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/Marko97IT/rpi5-qemu-win11/refs/heads/main/assets/QEMU_EFI.fd
+<p>Now you need the UEFI firmware to run Windows 11 correctly. You can download required files with sending these commands.</p>
+<div class="codehilite"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/Marko97IT/rpi5-qemu-win11.github.io/refs/heads/main/assets/uefi/QEMU_EFI-pflash.raw
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/Marko97IT/rpi5-qemu-win11.github.io/refs/heads/main/assets/uefi/QEMU_VARS-pflash.raw
 </code></pre></div>
 
 <p>Download VirtIO drivers with this command.</p>
-<div class="codehilite"><pre><span></span><code>wget<span class="w"> </span>https://github.com/qemus/virtiso-arm/releases/download/v0.1.266-1/virtio-win-0.1.266.iso
+<div class="codehilite"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/Marko97IT/rpi5-qemu-win11.github.io/refs/heads/main/assets/drivers/virtio-win-0.1.266.iso
 </code></pre></div>
 
 <p>Also, you need to download the ISO of Windows 11 ARM64. You can use the command <code>wget</code> to download it from the Raspberry Pi 5.
@@ -297,7 +300,8 @@ Leave a minimum amount of RAM for the host OS or you may experience instability.
 <span class="w">  </span>-cpu<span class="w"> </span>max<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-smp<span class="w"> </span><span class="m">4</span>,cores<span class="o">=</span><span class="m">2</span>,threads<span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--accel<span class="w"> </span>kvm<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-bios<span class="w"> </span>./QEMU_EFI.fd<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-drive<span class="w"> </span><span class="k">if</span><span class="o">=</span>pflash,file<span class="o">=</span>./QEMU_EFI-pflash.raw,format<span class="o">=</span>raw<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-drive<span class="w"> </span><span class="k">if</span><span class="o">=</span>pflash,file<span class="o">=</span>./QEMU_VARS-pflash.raw,format<span class="o">=</span>raw<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-device<span class="w"> </span>ramfb<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-device<span class="w"> </span>qemu-xhci<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-device<span class="w"> </span>usb-ehci<span class="w"> </span><span class="se">\</span>
@@ -365,7 +369,8 @@ Once you run the command to start the VM quickly connect to VNC to start the ins
 <span class="w">  </span>-cpu<span class="w"> </span>max<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-smp<span class="w"> </span><span class="m">4</span>,cores<span class="o">=</span><span class="m">2</span>,threads<span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--accel<span class="w"> </span>kvm<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-bios<span class="w"> </span>./QEMU_EFI.fd<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-drive<span class="w"> </span><span class="k">if</span><span class="o">=</span>pflash,file<span class="o">=</span>./QEMU_EFI-pflash.raw,format<span class="o">=</span>raw<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-drive<span class="w"> </span><span class="k">if</span><span class="o">=</span>pflash,file<span class="o">=</span>./QEMU_VARS-pflash.raw,format<span class="o">=</span>raw<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-device<span class="w"> </span>qemu-xhci<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-device<span class="w"> </span>usb-ehci<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-device<span class="w"> </span>usb-kbd<span class="w"> </span><span class="se">\</span>
